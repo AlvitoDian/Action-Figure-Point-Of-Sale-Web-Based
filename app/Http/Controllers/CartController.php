@@ -97,4 +97,18 @@ class CartController extends Controller
     {
         //
     }
+
+    public function updateCart (UpdateCartRequest $request)
+    {
+        /* Cart::instance('cart')->update($request->input('quantity'), $request->input('quantity'));
+        return redirect()->route('cart'); */
+
+        $data = $request->all();
+        /* dd($data); */
+
+        $item = Cart::findOrFail($data['id']);
+        $item->update($data);
+        // Redirect back to the cart or any other appropriate route
+        return redirect()->route('cart');
+    }
 }

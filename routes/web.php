@@ -56,6 +56,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/cart', [App\Http\Controllers\CartController::class, 'index'])->name('cart');
 
+    Route::put('/cart/updateQty', [App\Http\Controllers\CartController::class, 'updateCart'])->name('cart.updateqty');
+
     Route::delete('/cart/{id}', [App\Http\Controllers\CartController::class, 'delete'])->name('cart-delete');
 
 });

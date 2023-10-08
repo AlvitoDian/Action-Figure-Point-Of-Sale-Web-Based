@@ -25,8 +25,12 @@
       <td>{{ $cart->product->category->name }}</td>
       <td>@money($cart->product->price)</td>
       <td><form action="">
-        <input type="number" class="form-control" style="width: 30%" value="{{ $cart->quantity }}">
-        </form></td>
+        <input type="number" class="form-control" style="width: 30%" value="{{ $cart->quantity }}" data-rowid="{{ $cart->id }}" name="quantity" onchange="updateQuantity(this)">
+        </form>
+{{--       <a href="" class="mr-2"><i class="fa fa-minus"></i></a>
+      <span>{{ $cart->quantity }}</span>
+      <a href="" class="ml-2"><i class="fa fa-plus"></i></a> --}}
+      </td>
       <td><form action="{{ route('cart-delete', $cart->id) }}" method="post" class="d-inline">
         @method('delete')
         @csrf
@@ -134,7 +138,7 @@
             <p>Total Pembayaran : </p>
         </div>
         <div class="col-md-3">
-            <p>@money($Total)</p>
+            <p id="total_price">@money($Total)</p>
         </div>
     </div>
     <div class="row">
@@ -146,6 +150,22 @@
         </div>
     </div>
 </div>
-
 </div>
+
+<form id="updateCartQty" action="{{ route('cart.updateqty') }}" method="POST">
+  @csrf
+  @method('PUT')
+  <input type="hidden" id="rowId" name="id"/>
+  <input type="hidden" id="quantity" name="quantity"/>
+</form>
 @endsection
+@push('addon-script')
+ <script>
+  function updateQuantity(quantity)
+  {
+    $('#rowId').val($(quantity).data('rowid'));
+    $('#quantity').val($(quantity).val());
+    $('#updateCartQty').submit();
+  }
+ </script>
+@endpush
