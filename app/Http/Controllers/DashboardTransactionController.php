@@ -135,15 +135,7 @@ class DashboardTransactionController extends Controller
      */
     public function update(UpdateTransactionRequest $request, $id)
     {   
-        $data = $request->all();
-
-        $item = Transaction::findOrFail($id);
-
-        /* dd($item); */
-
-        $item->update($data);
-
-        return redirect()->route('transaction-user');
+        
     }
 
     /**

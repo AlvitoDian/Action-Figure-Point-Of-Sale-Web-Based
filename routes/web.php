@@ -47,9 +47,9 @@ Route::middleware(['auth', 'admin'])
     
     Route::resource('category', DashboardCategoryController::class);
     
-    Route::put('/transaction-status/{id}', [App\Http\Controllers\DashboardTransactionController::class, 'update'])->name('transaction-update-status');
+    Route::put('/transaction-status/{id}', [App\Http\Controllers\DashboardTransactionAdminController::class, 'update'])->name('transaction-update-status');
 
-    Route::get('/transaction-admin', [App\Http\Controllers\DashboardTransactionController::class, 'indexAdmin'])->name('transaction-admin');
+    Route::get('/transaction-admin', [App\Http\Controllers\DashboardTransactionAdminController::class, 'index'])->name('transaction-admin');
 
     });
 
