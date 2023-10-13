@@ -37,17 +37,51 @@ class DashboardTransactionController extends Controller
             'transactions' => $transactions
         ]);
     }
+    
+    public function indexAdmin()
+    { 
+        /* $transactions = TransactionDetail::with(['transaction.user','product'])
+            ->whereHas('transaction', function($transaction){
+                $transaction->where('users_id', Auth::user()->id);
+            })->get();
+
+        return view('pages.transaction',[
+            'transactions' => $transactions
+        ]); */
+
+       $transactions = Transaction::with('user')
+        ->get();
+
+        return view('pages.transaction-admin.transaction',[
+            'transactions' => $transactions
+        ]);
+    }
 
     public function details(Request $request, $id)
     {   
         $transactionProducts = TransactionDetail::with(['transaction.user','product'])
             ->where('transactions_id', $id)
             ->get();
-            /* dd($transactionProducts); */
+        $transactions = Transaction::with('user')
+        ->where('id', $id)->first();
+            /* dd($transactions); */
          return view('pages.transaction-details', [
-        'transactionProducts' => $transactionProducts
+        'transactionProducts' => $transactionProducts,
+        'transactions' => $transactions
     ]);  
     }
+    
+    public function detailProducts(Request $request, $id)
+    {   
+        $productTransDetails = TransactionDetail::with(['transaction.user','product'])
+            ->where('id', $id)
+            ->first();
+           /*  dd($productTransDetails); */
+         return view('pages.transaction-details-product', [
+        'productTransDetails' => $productTransDetails
+    ]);  
+    }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -99,9 +133,17 @@ class DashboardTransactionController extends Controller
      * @param  \App\Models\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateTransactionRequest $request, Transaction $transaction)
-    {
-        //
+    public function update(UpdateTransactionRequest $request, $id)
+    {   
+        $data = $request->all();
+
+        $item = Transaction::findOrFail($id);
+
+        /* dd($item); */
+
+        $item->update($data);
+
+        return redirect()->route('transaction-user');
     }
 
     /**

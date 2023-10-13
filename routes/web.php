@@ -40,15 +40,24 @@ Route::post('/logout', [LoginController::class, 'logout']);
 
 /* Route::get('/create-product', [DashboardProductController::class, 'create']); */
 
+Route::middleware(['auth', 'admin'])
+    ->group(function() {
+    
+    Route::resource('product', DashboardProductController::class);
+    
+    Route::resource('category', DashboardCategoryController::class);
+    
+    Route::put('/transaction-status/{id}', [App\Http\Controllers\DashboardTransactionController::class, 'update'])->name('transaction-update-status');
+
+    Route::get('/transaction-admin', [App\Http\Controllers\DashboardTransactionController::class, 'indexAdmin'])->name('transaction-admin');
+
+    });
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/', function () { 
         return view('pages/dashboard');
     });
  
-    Route::resource('product', DashboardProductController::class);
-    
-    Route::resource('category', DashboardCategoryController::class);
-    
     Route::resource('transaction', CheckoutController::class);
 
     Route::get('/detail/{id}', [DetailController::class, 'index'])->name('detail');
@@ -66,6 +75,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/transaction-user', [App\Http\Controllers\DashboardTransactionController::class, 'index'])->name('transaction-user');
     
     Route::get('/transaction-details/{id}', [App\Http\Controllers\DashboardTransactionController::class, 'details'])->name('transaction-details');
+    
+    Route::get('/transaction-details-product/{id}', [App\Http\Controllers\DashboardTransactionController::class, 'detailProducts'])->name('transaction-details-product');
 
 
 });

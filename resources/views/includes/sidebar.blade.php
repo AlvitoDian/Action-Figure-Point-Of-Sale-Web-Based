@@ -1,12 +1,10 @@
    <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav {{-- bg-gradient-primary --}} sidebar sidebar-dark accordion" id="accordionSidebar" style="background: linear-gradient(to bottom, #f8444f, #ca2d38);
+">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+                <img src="{{ asset('img\logo.png') }}" alt="" style="width: 120px;">
             </a>
 
             <!-- Divider -->
@@ -82,6 +80,7 @@
                     <span>Daftar Transaksi</span></a>
             </li>
 
+            @if(auth()->user()->hasRole('ADMIN'))
             <!-- Heading -->
             <div class="sidebar-heading">
                 Kelola Barang (Halaman Admin)
@@ -100,10 +99,17 @@
             </li>
             
             <li class="nav-item">
-                <a class="nav-link" href="/stock">
+                <a class="nav-link" href="{{ route('transaction-admin') }}">
+                    <i class="fas fa-fw fa-file-invoice"></i>
+                    <span>Daftar Transaksi User</span></a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="">
                     <i class="fas fa-fw fa-user"></i>
                     <span>Daftar User</span></a>
             </li>
+            @endif
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
