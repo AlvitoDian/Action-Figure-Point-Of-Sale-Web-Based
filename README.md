@@ -31,37 +31,11 @@ If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Lar
 
 ## Figure-nime Shop
 <p align="center">
-<img src="public/images/logo.png" alt="Total Downloads" width="300px">
+<img src="public/img/logo.png" width="300px">
 </p> 
 
 ## Description
 
-E-commerce application made specifically to facilitate easy and comfortable transaction of game items. To connect sellers and buyers of game items on the platform, so that users can sell or buy their favorite game items.
-
-## Inspiration from Source Code
-
-This project is inspired by the [Full Stack Web Developer - Online Store](https://class.buildwithangga.com/kelas/full-stack-web-developer-toko-online) course from [BuildWithAngga](https://class.buildwithangga.com/). We would like to express our gratitude to BuildWithAngga for the provided course material and the inspiration we gained from the course.
-
-## Inspiration from Website Content
-
-The content and design of this website are inspired by [itemku](https://itemku.com/), an e-commerce platform. We have taken some design concepts and elements from itemku as a reference to develop this project.
-
-## Disclaimer
-Please note that this project is intended for non-commercial use only. It is strictly prohibited to use this project or any derivative works for commercial purposes without obtaining proper authorization rights and licenses from the respective owners of the original content, including the itemku website. This project was created for personal study only.
-## Features
-
-- User registration and login: Allow users to create accounts and log in to access personalized features, such as saved addresses, order history, and wishlist.
-- Product catalog: Display a wide range of products with details such as images, descriptions, prices, and availability.Search functionality: Enable users to search for specific products based on keywords, categories, or filters.
-- Search functionality: Enable users to search for specific products based on keywords, categories, or filters.
-- Shopping cart: Provide a virtual shopping cart where users can add products, update quantities, and proceed to checkout.
-- Order tracking: Provide shipment tracking information to customers so they can monitor the progress of their orders.
-- Responsive design: Ensure the website is optimized for different devices and screen sizes, providing a seamless user experience.
-- Seller User: The Seller User feature allows registered users to become sellers on the platform and manage their own products and sales.
-- Super User: Super user is the one who can manage all transactions, products, and users.
+The application is still in the development stage ^^ .
 
 
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-
-**Note:** This project is inspired by the [Full Stack Web Developer - Toko Online](https://class.buildwithangga.com/class/full-stack-web-developer-toko-online) course from BuildWithAngga as well as content and design from [itemku]( https://itemku.com/) website. It is important to acknowledge the source of inspiration, but please note that this project is intended for non-commercial use only and for personal study only. Commercial use of this project or any derivative works without proper authorization is strictly prohibited.
