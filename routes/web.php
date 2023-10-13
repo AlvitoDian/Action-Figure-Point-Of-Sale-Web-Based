@@ -49,7 +49,7 @@ Route::middleware(['auth'])->group(function () {
     
     Route::resource('category', DashboardCategoryController::class);
     
-    Route::resource('transaction', DashboardTransactionController::class);
+    Route::resource('transaction', CheckoutController::class);
 
     Route::get('/detail/{id}', [DetailController::class, 'index'])->name('detail');
 
@@ -62,6 +62,11 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/cart/{id}', [App\Http\Controllers\CartController::class, 'delete'])->name('cart-delete');
 
     Route::post('/checkout', [CheckoutController::class, 'process'])->name('checkout');
+
+    Route::get('/transaction-user', [App\Http\Controllers\DashboardTransactionController::class, 'index'])->name('transaction-user');
+    
+    Route::get('/transaction-details/{id}', [App\Http\Controllers\DashboardTransactionController::class, 'details'])->name('transaction-details');
+
 
 });
 

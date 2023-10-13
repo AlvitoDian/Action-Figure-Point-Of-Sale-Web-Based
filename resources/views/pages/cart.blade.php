@@ -60,7 +60,7 @@
   <div class="form-row">
     <div class="form-group col-md-12">
       <label for="inputEmail4">Email</label>
-      <input type="email" class="form-control" id="inputEmail4" placeholder="Email" name="email" required>
+      <fieldset disabled><input type="email" class="form-control" id="inputEmail4" placeholder="Email" name="email" value="{{ Auth::user()->email }}"></fieldset>
     </div>
     <div class="form-group col-md-12">
       <label for="phone">Phone Number</label>

@@ -67,18 +67,24 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Transaksi Barang
+                Transaksi Barang (Halaman User)
             </div>
 
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('transaction.index') }}">
                     <i class="fas fa-fw fa-cash-register"></i>
-                    <span>Barang Keluar</span></a>
+                    <span>Daftar Barang</span></a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('transaction-user') }}">
+                    <i class="fas fa-fw fa-file-invoice"></i>
+                    <span>Daftar Transaksi</span></a>
             </li>
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Kelola Barang
+                Kelola Barang (Halaman Admin)
             </div>
             <!-- Nav Item - Tables -->
             <li class="nav-item">
@@ -92,11 +98,6 @@
                     <i class="fas fa-fw fa-list"></i>
                     <span>Daftar Kategori Barang</span></a>
             </li>
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Kelola User
-            </div>
             
             <li class="nav-item">
                 <a class="nav-link" href="/stock">

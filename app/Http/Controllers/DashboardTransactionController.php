@@ -19,11 +19,34 @@ class DashboardTransactionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $products = Product::with(['category'])->get();
-        return view('pages.transaction.index',[
-            'products' => $products
+    { 
+        /* $transactions = TransactionDetail::with(['transaction.user','product'])
+            ->whereHas('transaction', function($transaction){
+                $transaction->where('users_id', Auth::user()->id);
+            })->get();
+
+        return view('pages.transaction',[
+            'transactions' => $transactions
+        ]); */
+
+       $transactions = Transaction::with('user')
+        ->where('users_id', Auth::user()->id)
+        ->get();
+
+        return view('pages.transaction',[
+            'transactions' => $transactions
         ]);
+    }
+
+    public function details(Request $request, $id)
+    {   
+        $transactionProducts = TransactionDetail::with(['transaction.user','product'])
+            ->where('transactions_id', $id)
+            ->get();
+            /* dd($transactionProducts); */
+         return view('pages.transaction-details', [
+        'transactionProducts' => $transactionProducts
+    ]);  
     }
 
     /**
