@@ -51,6 +51,9 @@
                     </div>
                     
                                     @if(auth()->user()->hasRole('ADMIN'))
+                                    <h3>Bukti Pembayaran : </h3>
+                    <img src="{{ asset('storage/' . $transactions->payment_proof) }}" alt="">
+                    <h3>Total Pembayaran : @money($transactions->total_price)</h3>
                                     <form action="{{ route('transaction-update-status', $transactions->id) }}" method="POST" enctype="multipart/form-data">
                                       @csrf
                                       @method('PUT')

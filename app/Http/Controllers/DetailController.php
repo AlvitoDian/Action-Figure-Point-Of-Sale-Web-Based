@@ -45,7 +45,7 @@ class DetailController extends Controller
             ]);
         }
 
-        return redirect()->route('cart'); 
+        return redirect()->route('transaction.index'); 
     }
 }
  

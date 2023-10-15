@@ -14,7 +14,8 @@ class Transaction extends Model
       'tax_price',
       'transaction_status',
       'total_price',
-      'code'
+      'code',
+      'payment_proof'
     ];
 
     public function user(){

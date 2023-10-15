@@ -65,14 +65,16 @@
                                         <button type="submit" class="btn btn-primary">Perbarui</button>
                                     </form>
                                     @elseif(auth()->user()->hasRole('USER'))
-                                    <form action="">
+                                    <form action="{{ route('transaction-proof', $transactions->id) }}" method="POST" enctype="multipart/form-data">
+                                      @csrf
+                                      @method('PUT')
                                         <div class="form-group">
                                         <label for="exampleInputPassword1">Upload Bukti Pembayaran</label>
                                         <p class="mt-4">Cara Pembayaran : </p>
                                         <p>1. Pembayaran dilakukan menggunakan --- </p>
                                         <p>2. Transfer ke Nomer 082132123123</p>
                                         <p>3. Screenshot dan kirim bukti pembayaran pada kolom di bawah ini</p>
-                                        <input type="file" class="form-control" id="exampleInputPassword1">
+                                        <input type="file" class="form-control" id="exampleInputPassword1" name="payment_proof">
                                         </div>
                                         <button type="submit" class="btn btn-primary">Kirim</button>
                                     </form>

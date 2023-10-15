@@ -135,7 +135,16 @@ class DashboardTransactionController extends Controller
      */
     public function update(UpdateTransactionRequest $request, $id)
     {   
-        
+       
+        $data = $request->all();
+
+        $item = Transaction::findOrFail($id);
+
+        $data['payment_proof'] = $request->file('payment_proof')->store('payment-proof-users','public');
+
+        $item->update($data);
+
+        return redirect()->route('transaction-user');
     }
 
     /**

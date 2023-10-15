@@ -51,6 +51,8 @@ Route::middleware(['auth', 'admin'])
 
     Route::get('/transaction-admin', [App\Http\Controllers\DashboardTransactionAdminController::class, 'index'])->name('transaction-admin');
 
+    Route::get('/transaction-details-admin/{id}', [App\Http\Controllers\DashboardTransactionAdminController::class, 'details'])->name('transaction-details-admin');
+
     });
 
 Route::middleware(['auth'])->group(function () {
@@ -77,6 +79,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/transaction-details/{id}', [App\Http\Controllers\DashboardTransactionController::class, 'details'])->name('transaction-details');
     
     Route::get('/transaction-details-product/{id}', [App\Http\Controllers\DashboardTransactionController::class, 'detailProducts'])->name('transaction-details-product');
+    
+    Route::put('/transaction-proof/{id}', [App\Http\Controllers\DashboardTransactionController::class, 'update'])->name('transaction-proof');
 
 
 });

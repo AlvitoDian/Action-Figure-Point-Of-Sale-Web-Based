@@ -38,7 +38,7 @@ class DashboardTransactionAdminController extends Controller
         $transactions = Transaction::with('user')
         ->where('id', $id)->first();
             /* dd($transactions); */
-         return view('pages.transaction-details', [
+         return view('pages.transaction-admin.transaction-details', [
         'transactionProducts' => $transactionProducts,
         'transactions' => $transactions
     ]);  
@@ -49,9 +49,12 @@ class DashboardTransactionAdminController extends Controller
         $productTransDetails = TransactionDetail::with(['transaction.user','product'])
             ->where('id', $id)
             ->first();
+        $transactions = Transaction::with('user')
+        ->where('id', $id)->first();
            /*  dd($productTransDetails); */
-         return view('pages.transaction-details-product', [
-        'productTransDetails' => $productTransDetails
+         return view('pages.transaction-admin.transaction-details-product', [
+        'productTransDetails' => $productTransDetails,
+        'transactions' => $transactions
     ]);  
     }
     

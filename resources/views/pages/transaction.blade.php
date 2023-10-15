@@ -156,7 +156,7 @@
                     <div class="row mt-3">
                       <div class="col-12 mt-2">
                         @foreach ($transactions as $transaction)
-                        @if ($transaction->transaction_status === 'READY')
+                        @if ($transaction->transaction_status === 'READY TAKE')
                             <a
                           class="card card-list d-block"
                           href="{{ route('transaction-details', $transaction->id) }}"

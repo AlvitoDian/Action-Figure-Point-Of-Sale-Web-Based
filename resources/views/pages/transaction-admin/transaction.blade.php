@@ -62,7 +62,7 @@
                         @if ($transaction->transaction_status === 'PENDING')
                             <a
                           class="card card-list d-block"
-                          href="{{ route('transaction-details', $transaction->id) }}"
+                          href="{{ route('transaction-details-admin', $transaction->id) }}"
                         >
                           <div class="card-body">
                             <div class="row">
@@ -112,7 +112,7 @@
                         @if ($transaction->transaction_status === 'PEMBAYARAN TERVERIFIKASI')
                             <a
                           class="card card-list d-block"
-                          href="{{ route('transaction-details', $transaction->id) }}"
+                          href="{{ route('transaction-details-admin', $transaction->id) }}"
                         >
                           <div class="card-body">
                             <div class="row">
@@ -149,7 +149,7 @@
                   
                   <div
                     class="tab-pane fade"
-                    id="payed"
+                    id="ready"
                     role="tabpanel"
                     aria-labelledby="buy-tab"
                   >
@@ -159,7 +159,7 @@
                         @if ($transaction->transaction_status === 'READY TAKE')
                             <a
                           class="card card-list d-block"
-                          href="{{ route('transaction-details', $transaction->id) }}"
+                          href="{{ route('transaction-details-admin', $transaction->id) }}"
                         >
                           <div class="card-body">
                             <div class="row">
