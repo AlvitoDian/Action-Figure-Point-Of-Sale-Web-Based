@@ -44,11 +44,6 @@
                                                 <div style="font-size: 50px">@money($productTransDetails->product->price)</div>
                                             </p>
                                             
-                                            <p class="mt-5">
-                                                <hr class="sidebar-divider">
-                                                <div class="font-weight-bold" style="display: inline-block;">Bukti Pembayaran</div>
-                                                <div style="font-size: 20px">Belum ada Bukti Pembayaran</div>
-                                            </p>
                                             
                                         </div>
                                         

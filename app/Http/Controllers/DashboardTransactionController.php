@@ -148,7 +148,7 @@ class DashboardTransactionController extends Controller
 
         $item->update($data);
 
-        return redirect()->route('transaction-details', $id);
+        return redirect()->route('transaction-details', $id)->with('success', 'Bukti Pembayaran Telah Terkirim');
     }
 
     /**

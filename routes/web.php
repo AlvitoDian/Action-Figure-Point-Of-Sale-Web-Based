@@ -2,6 +2,7 @@
 
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\ProductController;
@@ -32,14 +33,6 @@ Route::post('/register', [RegisterController::class, 'store']);
 
 Route::post('/logout', [LoginController::class, 'logout']);
 
-/* Route::get('/stock/{slug}', [ProductController::class, 'show']);
- */
-/* Route::get('/create-product', [DashboardProductController::class, 'create']); */
-
-/* Route::post('/store-product', [DashboardProductController::class, 'store']); */
-
-/* Route::get('/create-product', [DashboardProductController::class, 'create']); */
-
 Route::middleware(['auth', 'admin'])
     ->group(function() {
     
@@ -63,7 +56,11 @@ Route::middleware(['auth'])->group(function () {
 
     return view('pages/dashboard', ['productsNew' => $productsNew]);
 });
- 
+    
+    Route::get('/profile/{id}', [UserController::class, 'edit'])->name('profile');
+    
+    Route::put('/profile-update/{id}', [UserController::class, 'update'])->name('profile-update');
+
     Route::resource('transaction', CheckoutController::class);
 
     Route::get('/detail/{id}', [DetailController::class, 'index'])->name('detail');

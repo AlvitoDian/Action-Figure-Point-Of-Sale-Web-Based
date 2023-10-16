@@ -17,7 +17,7 @@
                     <span>Dasbor</span></a>
             </li>
 
-            <!-- Divider -->
+            {{-- <!-- Divider -->
             <hr class="sidebar-divider">
 
             <!-- Heading -->
@@ -58,14 +58,15 @@
                         <a class="collapse-item" href="utilities-other.html">Other</a>
                     </div>
                 </div>
-            </li>
+            </li> --}}
 
             <!-- Divider -->
-            <hr class="sidebar-divider">
+            @if(auth()->user()->hasRole('USER'))
 
+            <hr class="sidebar-divider">
             <!-- Heading -->
             <div class="sidebar-heading">
-                Transaksi Barang (Halaman User)
+                Transaksi Barang
             </div>
 
             <li class="nav-item">
@@ -76,14 +77,33 @@
             
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('transaction-user') }}">
-                    <i class="fas fa-fw fa-file-invoice"></i>
+                    <i class="fas fa-fw fa-file-import"></i>
                     <span>Daftar Transaksi</span></a>
             </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="fas fa-fw fa-file-invoice"></i>
+                    <span>Riwayat Transaksi</span></a>
+            </li>
+
+            <hr class="sidebar-divider">
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Pengaturan Akun 
+            </div>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('profile', Auth::user()->id) }}">
+                    <i class="fas fa-fw fa-user"></i>
+                    <span>Profil Akun</span></a>
+            </li>
+            @endif
 
             @if(auth()->user()->hasRole('ADMIN'))
             <!-- Heading -->
             <div class="sidebar-heading">
-                Kelola Barang (Halaman Admin)
+                Kelola Barang
             </div>
             <!-- Nav Item - Tables -->
             <li class="nav-item">
