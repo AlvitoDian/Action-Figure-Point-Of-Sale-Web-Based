@@ -24,7 +24,10 @@ class UpdateTransactionRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'payment_proof' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:10048', /* 
+            'transaction_status' => 'required|max:255',
+            'total_price' =>'required|max:255', */
+            
         ];
     }
 }

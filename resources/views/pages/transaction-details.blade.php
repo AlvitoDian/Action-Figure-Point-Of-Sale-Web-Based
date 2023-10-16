@@ -50,7 +50,7 @@
                       </div>
                     </div>
                     
-                                    @if(auth()->user()->hasRole('ADMIN'))
+                                  {{--   @if(auth()->user()->hasRole('ADMIN'))
                                     <form action="{{ route('transaction-update-status', $transactions->id) }}" method="POST" enctype="multipart/form-data">
                                       @csrf
                                       @method('PUT')
@@ -63,21 +63,55 @@
                                             </select>
                                         </div>
                                         <button type="submit" class="btn btn-primary">Perbarui</button>
-                                    </form>
-                                    @elseif(auth()->user()->hasRole('USER'))
+                                    </form> --}}
+                                    @if(auth()->user()->hasRole('USER'))
+                                    
                                     <form action="{{ route('transaction-proof', $transactions->id) }}" method="POST" enctype="multipart/form-data">
                                       @csrf
                                       @method('PUT')
                                         <div class="form-group">
                                         <label for="exampleInputPassword1">Upload Bukti Pembayaran</label>
                                         <p class="mt-4">Cara Pembayaran : </p>
-                                        <p>1. Pembayaran dilakukan menggunakan --- </p>
-                                        <p>2. Transfer ke Nomer 082132123123</p>
+                                        <p>1. Pembayaran dilakukan menggunakan</p>
+                                        <p>2. Transfer ke Nomer 082132123123 dengan total Pembayaran @money($transactions->total_price)</p>
                                         <p>3. Screenshot dan kirim bukti pembayaran pada kolom di bawah ini</p>
-                                        <input type="file" class="form-control" id="exampleInputPassword1" name="payment_proof">
+                                        <input type="file" class="form-control" id="exampleInputPassword1" name="payment_proof" id="submit-image">
                                         </div>
-                                        <button type="submit" class="btn btn-primary">Kirim</button>
+                                        <button type="submit" class="btn btn-primary" id="submit-button" >Kirim</button>
+                                        @if($errors->any())
+                                             <div class="alert alert-danger">
+                                                 <ul>
+                                                      @foreach ($errors->all() as $error)
+                                                          <li>{{ $error }}</li>
+                                                      @endforeach
+                                                  </ul>
+                                              </div>
+                                        @endif
+                                        @if(session('error'))
+                                           <div class="alert alert-danger">
+                                               {{ session('error') }}
+                                           </div>
+                                        @endif
                                     </form>
+                                    <script>
+                                       // Mengambil elemen form dan tombol submit
+                                        const form = document.querySelector('form');
+                                       const submitButton = document.getElementById('submit-button');
+                                       const paymentProofInput = document.querySelector('input[name="payment_proof"]');
+
+                                        // Mengganti teks tombol submit ketika formulir dikirim
+                                        form.addEventListener('submit', function () {
+                                          submitButton.innerHTML = 'Mengirim...';
+                                        });
+                                      </script>
+                                      @if ($transactions->payment_proof) <!-- Tambahkan kondisi ini -->
+                                        <script>
+                                          // Menonaktifkan form jika bukti pembayaran telah diunggah
+                                          submitButton.setAttribute("disabled", true);
+                                          paymentProofInput.setAttribute('disabled', true);
+                                          submitButton.innerHTML = 'Terkirim';
+                                        </script>
+                                     @endif
                                     @endif
                   </div>
 
@@ -86,5 +120,4 @@
 
           </div>
 </div>
-
 @endsection

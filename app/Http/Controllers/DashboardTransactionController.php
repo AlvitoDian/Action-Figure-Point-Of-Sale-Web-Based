@@ -140,11 +140,15 @@ class DashboardTransactionController extends Controller
 
         $item = Transaction::findOrFail($id);
 
+        if ($item->payment_proof) {
+            return redirect()->route('transaction-details', $id)->with('error', 'Anda sudah mengunggah bukti pembayaran sebelumnya.');
+        }
+
         $data['payment_proof'] = $request->file('payment_proof')->store('payment-proof-users','public');
 
         $item->update($data);
 
-        return redirect()->route('transaction-user');
+        return redirect()->route('transaction-details', $id);
     }
 
     /**

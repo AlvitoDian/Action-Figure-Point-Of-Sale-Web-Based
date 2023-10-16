@@ -23,7 +23,7 @@
                         @foreach ($transactionProducts as $transaction)
                             <a
                           class="card card-list d-block"
-                          href="{{ route('transaction-details-product', $transaction->id) }}"
+                          href="{{ route('transaction-details-product-admin', $transaction->id) }}"
                         >
                           <div class="card-body">
                             <div class="row">
@@ -67,18 +67,7 @@
                                         </div>
                                         <button type="submit" class="btn btn-primary">Perbarui</button>
                                     </form>
-                                    @elseif(auth()->user()->hasRole('USER'))
-                                    <form action="">
-                                        <div class="form-group">
-                                        <label for="exampleInputPassword1">Upload Bukti Pembayaran</label>
-                                        <p class="mt-4">Cara Pembayaran : </p>
-                                        <p>1. Pembayaran dilakukan menggunakan --- </p>
-                                        <p>2. Transfer ke Nomer 082132123123</p>
-                                        <p>3. Screenshot dan kirim bukti pembayaran pada kolom di bawah ini</p>
-                                        <input type="file" class="form-control" id="exampleInputPassword1">
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">Kirim</button>
-                                    </form>
+                                    
                                     @endif
                   </div>
 

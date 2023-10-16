@@ -52,13 +52,17 @@ Route::middleware(['auth', 'admin'])
     Route::get('/transaction-admin', [App\Http\Controllers\DashboardTransactionAdminController::class, 'index'])->name('transaction-admin');
 
     Route::get('/transaction-details-admin/{id}', [App\Http\Controllers\DashboardTransactionAdminController::class, 'details'])->name('transaction-details-admin');
+    
+    Route::get('/transaction-details-product-admin/{id}', [App\Http\Controllers\DashboardTransactionAdminController::class, 'detailProducts'])->name('transaction-details-product-admin');
 
     });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/', function () { 
-        return view('pages/dashboard');
-    });
+    Route::get('/', function () {
+    $productsNew = Product::latest()->first();
+
+    return view('pages/dashboard', ['productsNew' => $productsNew]);
+});
  
     Route::resource('transaction', CheckoutController::class);
 
